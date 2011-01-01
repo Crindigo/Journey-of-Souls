@@ -13,6 +13,7 @@
 
     <target name="-post-jar">
 		<copy file="config/log4j.properties" todir="${dist.dir}"/>
+		<copy file="config/josmud.properties" todir="${dist.dir}"/>
 		<copy file="config/josmud.log" todir="${dist.dir}"/>
 		<copy file="LICENSE.txt" todir="${dist.dir}"/>
 		<delete file="${dist.dir}/README.TXT" />
