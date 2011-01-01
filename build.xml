@@ -10,6 +10,14 @@
 <project name="JourneyofSouls" default="default" basedir=".">
     <description>Builds, tests, and runs the project JourneyofSouls.</description>
     <import file="nbproject/build-impl.xml"/>
+
+    <target name="-post-jar">
+		<copy file="config/log4j.properties" todir="${dist.dir}"/>
+		<copy file="config/josmud.log" todir="${dist.dir}"/>
+		<copy file="LICENSE.txt" todir="${dist.dir}"/>
+		<delete file="${dist.dir}/README.TXT" />
+		<copy file="README.txt" todir="${dist.dir}"/>
+    </target>
     <!--
 
     There exist several targets which are by default empty and which can be 
