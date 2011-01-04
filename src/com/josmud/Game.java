@@ -22,6 +22,8 @@ public class Game {
 	public static Boolean isUp = false;
 	
 	/**
+	 * This is the main function. This is where it all begins. Yeah.
+	 *
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -61,7 +63,7 @@ public class Game {
 		}
 
 		logger.info("(TODO) Starting Game Loop ...");
-		logger.info("(TODO) JoS is up and ready to rock on port 4444!");
+		logger.info("JoS is up and ready to rock on port " + config.getProperty("server.port") + "!");
 	}
 
 }

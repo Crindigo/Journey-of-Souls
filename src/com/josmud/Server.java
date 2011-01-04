@@ -8,9 +8,9 @@
 
 package com.josmud;
 
+import java.io.*;
 import java.net.*;
 import java.util.HashMap;
-import java.io.OutputStream;
 
 import com.josmud.core.Descriptor;
 
@@ -65,11 +65,13 @@ public class Server extends Thread {
 	{
 		try {
 			sock = new ServerSocket(port, 1);
+			Game.isUp = true;
 
 			while ( Game.isUp ) {
 				Socket clientSocket = sock.accept();
-				OutputStream os = clientSocket.getOutputStream();
-
+				DataOutputStream os = new DataOutputStream(clientSocket.getOutputStream());
+				os.writeChars("Thanks for connecting! Goodbye!\r\n");
+				clientSocket.close();
 			}
 		}
 		catch (Exception e) {
