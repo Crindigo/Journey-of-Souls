@@ -14,7 +14,12 @@
                             ____) | (_) | |_| | \__ \
                            |_____/ \___/ \__,_|_|___/
 
-                               By: Jeremy Privett
+                     Copyright (c) 2010 - 2011, Jeremy Privett
+                               All rights reserved.
+
+Journey of Souls is licensed under the New BSD License. Full details are in the
+LICENSE.txt file that should be packaged with this source. The license can also
+be found by going to: http://www.josmud.com/license.php
 
 ---------------------------
 Core Game Design Principles

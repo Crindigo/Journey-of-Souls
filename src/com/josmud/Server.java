@@ -1,7 +1,18 @@
+/**
+ * Journey of Souls
+ * Copyright (c) 2010 - 2011, Jeremy Privett
+ * All rights reserved.
+ *
+ * Licensed under the New BSD License. See LICENSE.txt for details.
+ */
+
 package com.josmud;
 
 import java.net.*;
 import java.util.HashMap;
+import java.io.OutputStream;
+
+import com.josmud.core.Descriptor;
 
 public class Server extends Thread {
 
@@ -10,7 +21,6 @@ public class Server extends Thread {
 
 	private int port = 0;
 	private ServerSocket sock = null;
-	private Socket clientSock = null;
 	
 	private static Server reference = null;
 	
@@ -30,10 +40,42 @@ public class Server extends Thread {
 		this.port = port;
 	}
 
+	public void addDescriptor(Descriptor d)
+	{
+
+	}
+
+	public void addDescriptor(Descriptor d, String name)
+	{
+
+	}
+
+	public void removeDescriptor(Descriptor d)
+	{
+
+	}
+
+	public void removeDescriptor(String name)
+	{
+		
+	}
+
 	@Override
 	public void run()
 	{
-		
+		try {
+			sock = new ServerSocket(port, 1);
+
+			while ( Game.isUp ) {
+				Socket clientSocket = sock.accept();
+				OutputStream os = clientSocket.getOutputStream();
+
+			}
+		}
+		catch (Exception e) {
+			Game.logger.fatal("Unable to create server socket on port " + port + ". Exception message: " + e.getMessage());
+			System.exit(-1);
+		}
 	}
 	
 	@Override

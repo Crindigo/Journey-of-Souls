@@ -1,3 +1,11 @@
+/**
+ * Journey of Souls
+ * Copyright (c) 2010 - 2011, Jeremy Privett
+ * All rights reserved.
+ *
+ * Licensed under the New BSD License. See LICENSE.txt for details.
+ */
+
 package com.josmud;
 
 import org.apache.log4j.Logger;
@@ -10,6 +18,8 @@ public class Game {
 
 	public static Logger logger = Logger.getLogger("com.josmud");
 	public static Properties config = new Properties();
+
+	public static Boolean isUp = false;
 	
 	/**
 	 * @param args
@@ -37,7 +47,19 @@ public class Game {
 		logger.info("(TODO) Linking Rooms and Loading Exits ...");
 		logger.info("(TODO) Shuffling Room Positions ...");
 		logger.info("(TODO) Initializing Short Direction Names ...");
-		logger.info("(TODO) Initializing Game Server Socket ...");
+
+		try {
+			logger.info("Initializing Game Server Socket ...");
+			Server gameServer = Server.getInstance();
+			int serverPort = Integer.parseInt(config.getProperty("server.port"));
+			gameServer.setPort(serverPort);
+			gameServer.start();
+		}
+		catch ( Exception e ) {
+			logger.fatal("Problem creating Server Socket: " + e.getMessage());
+			System.exit(-1);
+		}
+
 		logger.info("(TODO) Starting Game Loop ...");
 		logger.info("(TODO) JoS is up and ready to rock on port 4444!");
 	}
