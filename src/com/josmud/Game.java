@@ -28,12 +28,12 @@ public class Game {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		PropertyConfigurator.configure("config/log4j.properties");
+		PropertyConfigurator.configure("log4j.properties");
 		logger.info("Starting Journey of Souls ...");
 
 		logger.info("Loading Game Configuration ...");
 		try {
-			config.load(new FileInputStream("config/josmud.properties"));
+			config.load(new FileInputStream("josmud.properties"));
 		}
 		catch (IOException e) {
 			logger.fatal("Unable to load 'josmud.properties' - Exiting.");
