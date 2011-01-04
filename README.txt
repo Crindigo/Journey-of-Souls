@@ -37,9 +37,9 @@ Building / Running From Source
 
 - The second assumption is that the working directory for running the project
   is the dist directory. You can set this value in the project properties or
-  you can just run "java -jar JourneyofSouls.jar from within the dist directory.
-  This is so that it will pick up log4j and josmud.properties. These files are
-  moved from config to dist as part of the build process.
+  you can just run "java -jar JourneyofSouls.jar" from within the dist
+  directory. This is so that it will pick up log4j and josmud.properties. These
+  files are moved from config to dist as part of the build process.
 
 ---------------------------
 Core Game Design Principles
