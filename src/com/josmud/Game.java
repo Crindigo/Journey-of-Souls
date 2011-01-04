@@ -19,7 +19,7 @@ public class Game {
 	public static Logger logger = Logger.getLogger("com.josmud");
 	public static Properties config = new Properties();
 
-	public static Boolean isUp = false;
+	public static boolean isUp = false;
 	
 	/**
 	 * This is the main function. This is where it all begins. Yeah.
