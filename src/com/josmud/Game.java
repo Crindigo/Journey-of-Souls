@@ -13,13 +13,14 @@ import org.apache.log4j.PropertyConfigurator;
 import java.util.Properties;
 import java.io.FileInputStream;
 import java.io.IOException;
+import com.josmud.core.Database;
 
 public class Game {
 
 	public static Logger logger = Logger.getLogger("com.josmud");
 	public static Properties config = new Properties();
 
-	public static Boolean isUp = false;
+	public static boolean isUp = false;
 	
 	/**
 	 * This is the main function. This is where it all begins. Yeah.
@@ -27,12 +28,12 @@ public class Game {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		PropertyConfigurator.configure("log4j.properties");
+		PropertyConfigurator.configure("config/log4j.properties");
 		logger.info("Starting Journey of Souls ...");
 
 		logger.info("Loading Game Configuration ...");
 		try {
-			config.load(new FileInputStream("josmud.properties"));
+			config.load(new FileInputStream("config/josmud.properties"));
 		}
 		catch (IOException e) {
 			logger.fatal("Unable to load 'josmud.properties' - Exiting.");
@@ -49,6 +50,17 @@ public class Game {
 		logger.info("(TODO) Linking Rooms and Loading Exits ...");
 		logger.info("(TODO) Shuffling Room Positions ...");
 		logger.info("(TODO) Initializing Short Direction Names ...");
+
+		Database db = new Database();
+
+		try {
+			db.connect();
+			db.doStuff();
+			db.close();
+		} catch ( Exception e ) {
+			logger.fatal("DB Error: " + e.getMessage());
+			System.exit(-1);
+		}
 
 		try {
 			logger.info("Initializing Game Server Socket ...");
