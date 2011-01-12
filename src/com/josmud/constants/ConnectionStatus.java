@@ -10,16 +10,16 @@ package com.josmud.constants;
  * @author jprivett
  */
 public class ConnectionStatus {
-	public static final int PLAYING = 0;
-	public static final int GET_USERNAME = 1;
-	public static final int GET_PASSWORD = 2;
-	public static final int PICK_CHAR = 3;
-	public static final int CREATE_USER = 4;
-	public static final int CREATE_PASS = 5;
-	public static final int VERIFY_PASS = 6;
-	public static final int GET_EMAIL = 7;
-	public static final int USER_OPTIONS = 8;
-	public static final int CREATE_CHAR_NAME = 9;
-	public static final int CHOOSE_RACE = 10;
-	public static final int CHOOSE_GENDER = 11;
+	public final static int PLAYING = 0;
+	public final static int GET_USERNAME = 1;
+	public final static int GET_PASSWORD = 2;
+	public final static int PICK_CHAR = 3;
+	public final static int CREATE_USER = 4;
+	public final static int CREATE_PASS = 5;
+	public final static int VERIFY_PASS = 6;
+	public final static int GET_EMAIL = 7;
+	public final static int USER_OPTIONS = 8;
+	public final static int CREATE_CHAR_NAME = 9;
+	public final static int CHOOSE_RACE = 10;
+	public final static int CHOOSE_GENDER = 11;
 }
