@@ -63,15 +63,22 @@ public class Server extends Thread {
 	@Override
 	public void run()
 	{
+		Game.logger.info("Initializing Game Server Socket ...");
+
 		try {
 			sock = new ServerSocket(port, 1);
 			Game.isUp = true;
 
 			while ( Game.isUp ) {
 				Socket clientSocket = sock.accept();
-				DataOutputStream os = new DataOutputStream(clientSocket.getOutputStream());
-				os.writeChars("Thanks for connecting! Goodbye!\r\n");
-				clientSocket.close();
+				try {
+					Descriptor d = new Descriptor(clientSocket);
+					d.start();
+				}
+				catch ( Exception e ) {
+					Game.logger.warn("Problem creating Descriptor for Socket: " + clientSocket.getInetAddress().toString());
+					clientSocket.close();
+				}
 			}
 		}
 		catch (Exception e) {
