@@ -1,6 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Journey of Souls
+ * Copyright (c) 2010 - 2011, Jeremy Privett
+ * All rights reserved.
+ *
+ * Licensed under the New BSD License. See LICENSE.txt for details.
  */
 
 package com.josmud.constants;
