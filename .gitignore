@@ -1,6 +1,7 @@
 bin
 build
 dist
+nbproject/private
 .DS_Store
 josmud.log
 nbproject/private

@@ -14,13 +14,17 @@ import java.util.Properties;
 import java.io.FileInputStream;
 import java.io.IOException;
 import com.josmud.core.Database;
+import javax.script.*;
 
-public class Game {
+public class Game extends Thread {
 
 	public static Logger logger = Logger.getLogger("com.josmud");
 	public static Properties config = new Properties();
+	public static Compilable jsCompiler = (Compilable) (new ScriptEngineManager()).getEngineByName("JavaScript");
 
 	public static boolean isUp = false;
+
+	private Game() {}
 	
 	/**
 	 * This is the main function. This is where it all begins. Yeah.
@@ -29,8 +33,7 @@ public class Game {
 	 */
 	public static void main(String[] args) {
 		PropertyConfigurator.configure("log4j.properties");
-		logger.info("Starting Journey of Souls ...");
-
+		
 		logger.info("Loading Game Configuration ...");
 		try {
 			config.load(new FileInputStream("josmud.properties"));
@@ -40,6 +43,8 @@ public class Game {
 			System.exit(-1);
 		}
 		logger.info("Game Configuration loaded.");
+
+		logger.info("Starting " + config.getProperty("game.name") + " ...");
 
 		logger.info("(TODO) Initializing Database ...");
 		logger.info("(TODO) Building Command Table ...");
@@ -63,8 +68,8 @@ public class Game {
 		}
 
 		try {
-			logger.info("Initializing Game Server Socket ...");
 			Server gameServer = Server.getInstance();
+			gameServer.setName("ServerThread");
 			int serverPort = Integer.parseInt(config.getProperty("server.port"));
 			gameServer.setPort(serverPort);
 			gameServer.start();
@@ -74,8 +79,28 @@ public class Game {
 			System.exit(-1);
 		}
 
-		logger.info("(TODO) Starting Game Loop ...");
-		logger.info("JoS is up and ready to rock on port " + config.getProperty("server.port") + "!");
+		Game game = new Game();
+		game.setName("GameLoopThread");
+		game.start();
+
+		logger.info(config.getProperty("game.shortname") + " is up and ready to rock on port " + config.getProperty("server.port") + "!");
+	}
+	
+	public void gameLoop()
+	{
+		logger.info("Starting Game Loop ...");
 	}
 
+	@Override
+	public void run()
+	{
+		this.gameLoop();
+	}
+
+	@Override
+	public Object clone()
+		throws CloneNotSupportedException
+	{
+		throw new CloneNotSupportedException();
+	}
 }
